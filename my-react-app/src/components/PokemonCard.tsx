@@ -1,17 +1,20 @@
+import styles from './PokemonCard.module.css'
+
 interface PokemonProps {
   pokemon :{
     imgSrc?: string;
     name: string;
+    color?: string;
   }
 }
 
 function PokemonCard({ pokemon }: PokemonProps) {
   return (
-  <figure>
+  <figure className={styles.card} style={{backgroundColor: pokemon.color ? pokemon.color : "black"}}>
     {pokemon.imgSrc != null   ? (
-    <img src={pokemon.imgSrc} alt={pokemon.name}></img>
+    <img src={pokemon.imgSrc} alt={pokemon.name} className={styles.cardImg}></img>
     ) : (
-      <p>???</p>
+      <p className={styles.title}>???</p>
     )}
     <figcaption>{pokemon.name}</figcaption>
   </figure>
